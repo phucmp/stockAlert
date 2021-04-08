@@ -1,7 +1,7 @@
 import time 
 from datetime import datetime
 
-class Tracker: 
+class Program: 
     def get_local_time(self):
         return datetime.now()
 
@@ -14,9 +14,13 @@ class Tracker:
     def is_market_open(self):
         return self.get_local_time() >= self.get_market_open_time() and self.get_local_time() < self.get_market_close_time()
 
+    def start(self):
+        self.ticker = raw_input("Enter Your Stock Ticker: ")
+        while(self.is_market_open()):
+            print("Market is open")
+            print("Tracking: $" + self.ticker)
+            time.sleep(20)
+
 if __name__ == "__main__":
-    tracker = Tracker()
-    if (tracker.is_market_open()):
-        print("Market is open")
-    else:
-        print("Market is closed")
+    program = Program()
+    program.start()

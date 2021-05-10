@@ -95,7 +95,7 @@ class Program:
 
     def start(self):
         self.ticker = input("Enter Your Stock Ticker: ").upper()
-        if (not self.is_market_open()):
+        if (self.is_market_open()):
             trades = Trades(self.ticker, self.api_token)
             trades.start()
         else:
